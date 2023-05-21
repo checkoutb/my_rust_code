@@ -36,6 +36,18 @@ def mk_rs():
 
 
 
+
+
+struct Solution {}
+
+fn main()
+{
+
+
+    println!("ans: {:?}", Solution::());
+}
+
+
 """
 
     # print(f_name)
@@ -57,6 +69,10 @@ def mk_rs():
         fd = open(name, mode="a+", encoding='utf-8')
         fd.write(content)
         fd.close()
+    
+    with open("last_rs_path", 'w', encoding='utf-8') as f:
+        f.write(name)
+
 
 if __name__ == "__main__":
     mk_rs()

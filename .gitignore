@@ -14,3 +14,4 @@ Cargo.lock
 *.pdb
 
 *i9n0r3
+*last_rs_path
