@@ -1,6 +1,7 @@
 import os
 import sys
 import time
+import platform
 
 
 def mk_rs():
@@ -72,6 +73,9 @@ fn main()
     
     with open("last_rs_path", 'w', encoding='utf-8') as f:
         f.write(name)
+
+    if 'linux' in platform.system().lower():
+        print(os.system("code " + name))
 
 
 if __name__ == "__main__":
