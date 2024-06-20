@@ -239,7 +239,7 @@ pub mod rss_mysql {
 
         let mut conn = pool.get_conn()?;
         let vsi = conn.query_map(
-            "select id,name_cn from rss.rss_source where active=1 order by priority desc limit 3",
+            "select id,name_cn from rss.rss_source where active=1 order by priority desc",
             |(id, name_cn)| {
                 let rs = RssSource { id, name: name_cn };
                 let mut conn2 = pool.get_conn().unwrap();
