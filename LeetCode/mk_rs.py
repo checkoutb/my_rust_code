@@ -5,29 +5,41 @@ import platform
 
 
 def mk_rs():
-    '''
-    '''
+    """ """
 
     lt_name = ""
 
-    if (len(lt_name) < 5):
+    if len(lt_name) < 5:
         lt_name = input("plz input name:")
 
     # print("-------------")
 
     lt_name = lt_name.replace("'", "")
-    t2 = lt_name[0:lt_name.find('.')]
+    t2 = lt_name[0 : lt_name.find(".")]
     mainName2 = "LT" + t2.zfill(4) + "_" + time.strftime("%Y%m%d", time.localtime())
-    f_name = "/" + mainName2 + "_" + lt_name[lt_name.find('.') + 2 :].replace(" ", "_").replace("'", "") + "_i9n0r3" + ".rs"
+    f_name = (
+        "/"
+        + mainName2
+        + "_"
+        + lt_name[lt_name.find(".") + 2 :].replace(" ", "_").replace("'", "")
+        + "_i9n0r3"
+        + ".rs"
+    )
     dir_name = ""
-    if (int(t2) < 2000):
-        dir_name = "ge" + str(int(int(int(t2)/1000)*1000))
+    if int(t2) < 2000:
+        dir_name = "ge" + str(int(int(int(t2) / 1000) * 1000))
         if int(t2) < 1000:
             dir_name = "gt0000"
     else:
-        dir_name = "ge" + str(int(int(int(t2)/200)*200))
+        dir_name = "ge" + str(int(int(int(t2) / 200) * 200))
 
     content = """
+
+
+
+
+
+
 
 
 
@@ -67,15 +79,16 @@ fn main()
 
     # not a file, 已经能确保不会删除其他文件了。
     if not os.path.isfile(name):
-        fd = open(name, mode="a+", encoding='utf-8')
+        fd = open(name, mode="a+", encoding="utf-8")
         fd.write(content)
         fd.close()
-    
-    with open("last_rs_path", 'w', encoding='utf-8') as f:
+
+    with open("last_rs_path", "w", encoding="utf-8") as f:
         f.write(name)
 
-    if 'linux' in platform.system().lower():
-        print(os.system("code " + name))
+    if "linux" in platform.system().lower():
+        # print(os.system("code " + name))
+        print(os.system("emacsclient +16 " + name + " &"))
 
 
 if __name__ == "__main__":
